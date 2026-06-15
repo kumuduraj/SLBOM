@@ -17,10 +17,14 @@ class CustomBOM(Document):
         self._compute_totals()
 
     def before_save(self):
-        if not self.is_new():
+        """Auto-increment version and create snapshot on edits (not new docs)."""
+        if not self.is_new() and not frappe.flags.get("slbom_skip_version_increment"):
             self._increment_version()
 
     def _validate_locked(self):
+        """Prevent saving a locked BOM (unless during internal price refresh)."""
+        if frappe.flags.get("slbom_skip_version_increment"):
+            return  # Price refresh — allow save
         if self.bom_locked:
             frappe.throw(
                 "This BOM is referenced by a Finalised Costing Sheet. "

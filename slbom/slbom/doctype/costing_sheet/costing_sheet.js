@@ -2,6 +2,13 @@
 
 frappe.ui.form.on("Costing Sheet", {
     setup(frm) {
+        // Filter BOM link in child table to show only Active BOMs
+        frm.set_query("bom", "bom_lines", function () {
+            return {
+                filters: { status: ["in", ["Active", "Draft"]] }
+            };
+        });
+
         if (frm.is_new()) {
             frappe.db.get_single_value("Costing Settings", "default_price_list")
                 .then((val) => {

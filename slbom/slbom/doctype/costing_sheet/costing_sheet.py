@@ -170,7 +170,10 @@ def refresh_prices(costing_sheet_name):
             bom_total += comp.amount
 
         bom_doc.total_material_cost = bom_total
+        # Skip version increment — price refresh shouldn't create new BOM versions
+        frappe.flags.slbom_skip_version_increment = True
         bom_doc.save(ignore_permissions=True)
+        frappe.flags.slbom_skip_version_increment = False
 
     cs.reload()
     cs.save(ignore_permissions=True)
