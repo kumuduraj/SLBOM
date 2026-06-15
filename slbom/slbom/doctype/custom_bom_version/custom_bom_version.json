@@ -1,0 +1,93 @@
+{
+  "name": "Custom BOM Version",
+  "module": "SLBOM",
+  "doctype": "DocType",
+  "document_type": "",
+  "engine": "InnoDB",
+  "istable": 0,
+  "is_submittable": 0,
+  "autoname": "naming_series:",
+  "naming_series": "BOM-VER-.YYYY.-.#####",
+  "track_changes": 0,
+  "sort_field": "version_number",
+  "sort_order": "DESC",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "BOM-VER-.YYYY.-.#####",
+      "hidden": 1,
+      "reqd": 1
+    },
+    {
+      "fieldname": "bom",
+      "fieldtype": "Link",
+      "label": "Custom BOM",
+      "options": "Custom BOM",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "version_number",
+      "fieldtype": "Int",
+      "label": "Version Number",
+      "reqd": 1,
+      "in_list_view": 1,
+      "bold": 1
+    },
+    {
+      "fieldname": "cb_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "snapshot_date",
+      "fieldtype": "Datetime",
+      "label": "Snapshot Date",
+      "reqd": 1,
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "modified_by_user",
+      "fieldtype": "Link",
+      "label": "Modified By",
+      "options": "User",
+      "reqd": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "sb_snapshot",
+      "fieldtype": "Section Break",
+      "label": "Component Snapshot"
+    },
+    {
+      "fieldname": "components_json",
+      "fieldtype": "Long Text",
+      "label": "Components JSON",
+      "reqd": 1,
+      "read_only": 1,
+      "description": "JSON snapshot of component rows at this version"
+    },
+    {
+      "fieldname": "change_summary",
+      "fieldtype": "Small Text",
+      "label": "Change Summary"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "BOM Manager",
+      "read": 1
+    },
+    {
+      "role": "Costing Manager",
+      "read": 1
+    },
+    {
+      "role": "BOM Viewer",
+      "read": 1
+    }
+  ]
+}

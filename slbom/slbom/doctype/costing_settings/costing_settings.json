@@ -1,0 +1,67 @@
+{
+  "name": "Costing Settings",
+  "module": "SLBOM",
+  "doctype": "DocType",
+  "document_type": "",
+  "engine": "InnoDB",
+  "issingle": 1,
+  "istable": 0,
+  "editable_grid": 0,
+  "track_changes": 1,
+  "autoname": "",
+  "fields": [
+    {
+      "fieldname": "default_price_list",
+      "fieldtype": "Link",
+      "label": "Default Price List",
+      "options": "Price List",
+      "reqd": 1,
+      "description": "Default price list for all Costing Sheets"
+    },
+    {
+      "fieldname": "sb_defaults",
+      "fieldtype": "Section Break",
+      "label": "Default Percentages"
+    },
+    {
+      "fieldname": "default_overhead_pct",
+      "fieldtype": "Float",
+      "label": "Default Overhead %",
+      "default": "15",
+      "precision": "2",
+      "description": "Default overhead percentage applied to Costing Sheets"
+    },
+    {
+      "fieldname": "cb_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "default_margin_pct",
+      "fieldtype": "Float",
+      "label": "Default Profit Margin %",
+      "default": "20",
+      "precision": "2",
+      "description": "Default profit margin percentage"
+    },
+    {
+      "fieldname": "sb_limits",
+      "fieldtype": "Section Break",
+      "label": "Limits"
+    },
+    {
+      "fieldname": "max_bom_lines",
+      "fieldtype": "Int",
+      "label": "Max BOM Lines per Costing Sheet",
+      "default": "3",
+      "description": "Maximum number of BOM lines allowed in a single Costing Sheet (1-5)"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "Costing Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    }
+  ]
+}

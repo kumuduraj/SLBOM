@@ -1,0 +1,41 @@
+{
+  "name": "SLBOM",
+  "module": "SLBOM",
+  "label": "SLBOM",
+  "category": "Modules",
+  "is_standard": 1,
+  "title": "BOM & Costing",
+  "icon": "tool",
+  "onboard": 1,
+  "content": "[{\"type\":\"shortcut\",\"data\":{\"doctype\":\"Custom BOM\",\"label\":\"Custom BOM\",\"type\":\"doctype\"}},{\"type\":\"shortcut\",\"data\":{\"doctype\":\"Costing Sheet\",\"label\":\"Costing Sheet\",\"type\":\"doctype\"}},{\"type\":\"shortcut\",\"data\":{\"doctype\":\"Costing Settings\",\"label\":\"Costing Settings\",\"type\":\"doctype\"}},{\"type\":\"shortcut\",\"data\":{\"doctype\":\"Custom BOM Version\",\"label\":\"BOM Version History\",\"type\":\"doctype\"}}]",
+  "links": [
+    {
+      "type": "Link",
+      "label": "Custom BOM",
+      "link_type": "DocType",
+      "link_to": "Custom BOM",
+      "description": "Create and manage Bills of Materials"
+    },
+    {
+      "type": "Link",
+      "label": "Costing Sheet",
+      "link_type": "DocType",
+      "link_to": "Costing Sheet",
+      "description": "Run cost analysis on BOMs"
+    },
+    {
+      "type": "Link",
+      "label": "Costing Settings",
+      "link_type": "DocType",
+      "link_to": "Costing Settings",
+      "description": "Module settings and defaults"
+    },
+    {
+      "type": "Link",
+      "label": "BOM Version History",
+      "link_type": "DocType",
+      "link_to": "Custom BOM Version",
+      "description": "View all BOM version snapshots"
+    }
+  ]
+}

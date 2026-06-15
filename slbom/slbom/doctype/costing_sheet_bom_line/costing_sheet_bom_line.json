@@ -1,0 +1,68 @@
+{
+  "name": "Costing Sheet BOM Line",
+  "module": "SLBOM",
+  "doctype": "DocType",
+  "document_type": "",
+  "engine": "InnoDB",
+  "istable": 1,
+  "editable_grid": 1,
+  "fields": [
+    {
+      "fieldname": "bom",
+      "fieldtype": "Link",
+      "label": "Custom BOM",
+      "options": "Custom BOM",
+      "reqd": 1,
+      "in_list_view": 1,
+      "columns": 2
+    },
+    {
+      "fieldname": "bom_item",
+      "fieldtype": "Data",
+      "label": "BOM Item",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 2,
+      "description": "Finished item from selected BOM"
+    },
+    {
+      "fieldname": "bom_version",
+      "fieldtype": "Int",
+      "label": "Version",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "quantity_factor",
+      "fieldtype": "Float",
+      "label": "Qty Factor",
+      "reqd": 1,
+      "default": "1",
+      "in_list_view": 1,
+      "columns": 1,
+      "precision": "3",
+      "description": "How many units of this BOM go into the combination product"
+    },
+    {
+      "fieldname": "material_cost",
+      "fieldtype": "Currency",
+      "label": "Material Cost",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 2,
+      "description": "BOM total x quantity_factor"
+    },
+    {
+      "fieldname": "share_pct",
+      "fieldtype": "Float",
+      "label": "Share %",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 1,
+      "precision": "2",
+      "description": "This BOM's cost as % of total material cost"
+    }
+  ],
+  "permissions": []
+}

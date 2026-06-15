@@ -1,0 +1,201 @@
+{
+  "name": "Costing Sheet",
+  "module": "SLBOM",
+  "doctype": "DocType",
+  "document_type": "",
+  "engine": "InnoDB",
+  "istable": 0,
+  "is_submittable": 0,
+  "autoname": "naming_series:",
+  "naming_series": "CS-.YYYY.-.#####",
+  "track_changes": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "title_field": "title",
+  "search_fields": "title, status",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "CS-.YYYY.-.#####",
+      "hidden": 1,
+      "reqd": 1
+    },
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "label": "Title",
+      "reqd": 1,
+      "description": "Descriptive title for this costing run"
+    },
+    {
+      "fieldname": "date",
+      "fieldtype": "Date",
+      "label": "Date",
+      "reqd": 1,
+      "default": "Today"
+    },
+    {
+      "fieldname": "cb_header",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nFinalised\nApproved",
+      "default": "Draft",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "price_list",
+      "fieldtype": "Link",
+      "label": "Price List",
+      "options": "Price List",
+      "reqd": 1,
+      "description": "Price list used for all item rate lookups"
+    },
+    {
+      "fieldname": "sb_bom_lines",
+      "fieldtype": "Section Break",
+      "label": "BOM Lines"
+    },
+    {
+      "fieldname": "bom_lines",
+      "fieldtype": "Table",
+      "label": "BOM Lines",
+      "options": "Costing Sheet BOM Line",
+      "reqd": 1,
+      "description": "Link up to 3 Custom BOMs (configurable in Costing Settings)"
+    },
+    {
+      "fieldname": "sb_material_summary",
+      "fieldtype": "Section Break",
+      "label": "Material Summary"
+    },
+    {
+      "fieldname": "total_material_cost",
+      "fieldtype": "Currency",
+      "label": "Total Material Cost",
+      "read_only": 1,
+      "bold": 1,
+      "description": "Sum of all BOM line material costs"
+    },
+    {
+      "fieldname": "sb_cost_additions",
+      "fieldtype": "Section Break",
+      "label": "Cost Additions"
+    },
+    {
+      "fieldname": "overhead_pct",
+      "fieldtype": "Float",
+      "label": "Overhead %",
+      "precision": "2",
+      "description": "Overhead percentage (default from Costing Settings)"
+    },
+    {
+      "fieldname": "overhead_amount",
+      "fieldtype": "Currency",
+      "label": "Overhead Amount",
+      "read_only": 1,
+      "description": "total_material_cost x overhead_pct / 100"
+    },
+    {
+      "fieldname": "cb_cost_additions",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "labour_cost",
+      "fieldtype": "Currency",
+      "label": "Labour Cost",
+      "description": "Manual direct labour entry"
+    },
+    {
+      "fieldname": "sb_total_cost",
+      "fieldtype": "Section Break",
+      "label": "Total Cost"
+    },
+    {
+      "fieldname": "total_cost",
+      "fieldtype": "Currency",
+      "label": "Total Cost",
+      "read_only": 1,
+      "bold": 1,
+      "description": "material + overhead + labour"
+    },
+    {
+      "fieldname": "sb_margin",
+      "fieldtype": "Section Break",
+      "label": "Margin & Price"
+    },
+    {
+      "fieldname": "profit_margin_pct",
+      "fieldtype": "Float",
+      "label": "Profit Margin %",
+      "precision": "2"
+    },
+    {
+      "fieldname": "profit_amount",
+      "fieldtype": "Currency",
+      "label": "Profit Amount",
+      "read_only": 1,
+      "description": "total_cost x profit_margin_pct / 100"
+    },
+    {
+      "fieldname": "cb_margin",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "selling_price",
+      "fieldtype": "Currency",
+      "label": "Selling Price",
+      "read_only": 1,
+      "bold": 1,
+      "description": "total_cost + profit_amount"
+    },
+    {
+      "fieldname": "sb_notes",
+      "fieldtype": "Section Break",
+      "label": "Notes & Approval",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Text Editor",
+      "label": "Notes"
+    },
+    {
+      "fieldname": "cb_approval",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "approved_by",
+      "fieldtype": "Link",
+      "label": "Approved By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "approval_date",
+      "fieldtype": "Date",
+      "label": "Approval Date",
+      "read_only": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "Costing Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "BOM Viewer",
+      "read": 1
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "name": "Custom BOM",
+  "module": "SLBOM",
+  "doctype": "DocType",
+  "document_type": "",
+  "engine": "InnoDB",
+  "istable": 0,
+  "is_submittable": 0,
+  "autoname": "naming_series:",
+  "naming_series": "BOM-.item.-.YYYY.-.#####",
+  "track_changes": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "title_field": "item_name",
+  "search_fields": "item, item_name, status",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "options": "BOM-.item.-.YYYY.-.#####",
+      "reqd": 1,
+      "hidden": 1,
+      "no_copy": 1
+    },
+    {
+      "fieldname": "item",
+      "fieldtype": "Link",
+      "label": "Item",
+      "options": "Item",
+      "reqd": 1,
+      "description": "Finished / Semi-Finished item this BOM produces"
+    },
+    {
+      "fieldname": "item_name",
+      "fieldtype": "Data",
+      "label": "Item Name",
+      "fetch_from": "item.item_name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "cb_header",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "uom",
+      "fieldtype": "Link",
+      "label": "UOM",
+      "options": "UOM",
+      "reqd": 1,
+      "fetch_from": "item.stock_uom",
+      "description": "Output UOM"
+    },
+    {
+      "fieldname": "quantity",
+      "fieldtype": "Float",
+      "label": "Output Quantity",
+      "reqd": 1,
+      "default": "1",
+      "precision": "3",
+      "description": "Number of units this BOM produces"
+    },
+    {
+      "fieldname": "sb_status",
+      "fieldtype": "Section Break",
+      "label": "Status & Version"
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nActive\nSuperseded\nCancelled",
+      "default": "Draft",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "version",
+      "fieldtype": "Int",
+      "label": "Version",
+      "default": "1",
+      "read_only": 1,
+      "in_list_view": 1,
+      "bold": 1,
+      "description": "Auto-incremented on every save after initial creation"
+    },
+    {
+      "fieldname": "cb_status",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "is_default",
+      "fieldtype": "Check",
+      "label": "Is Default BOM",
+      "description": "Only one BOM per item can be default"
+    },
+    {
+      "fieldname": "bom_locked",
+      "fieldtype": "Check",
+      "label": "Locked",
+      "read_only": 1,
+      "default": "0",
+      "description": "Set automatically when a Costing Sheet referencing this BOM is Finalised"
+    },
+    {
+      "fieldname": "sb_dates",
+      "fieldtype": "Section Break",
+      "label": "Validity",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "effective_from",
+      "fieldtype": "Date",
+      "label": "Effective From"
+    },
+    {
+      "fieldname": "cb_dates",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "effective_to",
+      "fieldtype": "Date",
+      "label": "Effective To"
+    },
+    {
+      "fieldname": "sb_components",
+      "fieldtype": "Section Break",
+      "label": "Components"
+    },
+    {
+      "fieldname": "components",
+      "fieldtype": "Table",
+      "label": "Components",
+      "options": "Custom BOM Component",
+      "reqd": 1,
+      "description": "Bill of Materials component rows"
+    },
+    {
+      "fieldname": "sb_totals",
+      "fieldtype": "Section Break",
+      "label": "Totals"
+    },
+    {
+      "fieldname": "total_material_cost",
+      "fieldtype": "Currency",
+      "label": "Total Material Cost",
+      "read_only": 1,
+      "bold": 1,
+      "description": "Sum of component amounts; auto-computed"
+    },
+    {
+      "fieldname": "sb_remarks",
+      "fieldtype": "Section Break",
+      "label": "Remarks",
+      "collapsible": 1
+    },
+    {
+      "fieldname": "remarks",
+      "fieldtype": "Small Text",
+      "label": "Remarks"
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "options": "Custom BOM",
+      "read_only": 1,
+      "no_copy": 1,
+      "hidden": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "BOM Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Costing Manager",
+      "read": 1
+    },
+    {
+      "role": "BOM Viewer",
+      "read": 1
+    }
+  ]
+}
